@@ -42,13 +42,10 @@ a:link, a:visited {
     color: black;
 }
 
-a:hover {
+a:hover, a:active {
     text-decoration: none;
     color: grey;
 
-}
-a:active {
-  color: grey;
 }
 
 .jumbotron {
@@ -73,7 +70,7 @@ a:active {
 .jumbotronProject {
   display: flex;
   align-items: center;
-  background-image: url(../background/wood.jpg);
+  //background-image: url(../background/wood.jpg);
   background-size: cover;
   margin-top: 0;
   margin-bottom: 0;
@@ -96,7 +93,7 @@ section .row img {
 
 .typing {
   font-size:125%;
-  width:20em;
+  width:18.5em;
   white-space:nowrap;
   overflow:hidden;
   border-right: .2em solid black;
@@ -128,8 +125,9 @@ section .row img {
 }
 
 footer {
-  font-size: 12px;
-  padding: 20px 0;
+  font-size: 14px;
+  background-color: grey;
+  padding: 20px;
 }
 
 footer .col-sm-8 {
