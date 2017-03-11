@@ -55,14 +55,11 @@ a:active {
   display: flex;
   align-items: center;
   background-image: url(../background/mac.png);
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background-size: auto;
   margin-top: 0;
   margin-bottom: 0;
   color: #ffffff;
-  height: 936px;
+  height: 100vh;
   text-shadow: 0.25px 0.25px 0.25px #000000;
 }
 
@@ -81,7 +78,7 @@ a:active {
   margin-top: 0;
   margin-bottom: 0;
   color: #ffffff;
-  height: 950px;
+  height: 100vh;
   text-shadow: 0.25px 0.25px 0.25px #000000;
 }
 
