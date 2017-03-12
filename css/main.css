@@ -70,7 +70,7 @@ a:hover, a:active {
 .jumbotronProject {
   display: flex;
   align-items: center;
-  //background-image: url(../background/wood.jpg);
+  background-image: url(../background/wood.jpg);
   background-size: cover;
   margin-top: 0;
   margin-bottom: 0;
@@ -93,7 +93,7 @@ section .row img {
 
 .typing {
   font-size:125%;
-  width:18.5em;
+  width:18.3em;
   white-space:nowrap;
   overflow:hidden;
   border-right: .2em solid black;
