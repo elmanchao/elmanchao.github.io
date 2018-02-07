@@ -1,4 +1,3 @@
-//Anonymous sely-executing function
 (function (root, factory) {
   factory(root.jQuery);
 }(this, function ($) {
@@ -13,17 +12,14 @@
 
     canvas.width = canvas.height = options.size;
 
-    // move 0,0 coordinates to the center
     ctx.translate(options.size / 2, options.size / 2);
 
-    // rotate canvas -90deg
     ctx.rotate((-1 / 2 + options.rotate / 180) * Math.PI);
 
     var radius = (options.size - options.lineWidth) / 2;
 
     Date.now = Date.now || function () {
 
-          //convert to milliseconds
           return +(new Date());
         };
 
@@ -40,9 +36,7 @@
       ctx.stroke();
     };
 
-    /**
-     * Return function request animation frame method or timeout fallback
-     */
+
     var reqAnimationFrame = (function () {
       return window.requestAnimationFrame ||
           window.webkitRequestAnimationFrame ||
@@ -52,27 +46,18 @@
           };
     }());
 
-    /**
-     * Draw the background of the plugin track
-     */
     var drawBackground = function () {
       if (options.trackColor) drawCircle(options.trackColor, options.lineWidth, 1);
     };
 
-    /**
-     * Clear the complete canvas
-     */
+
     this.clear = function () {
       ctx.clearRect(options.size / -2, options.size / -2, options.size, options.size);
     };
 
-    /**
-     * Draw the complete chart
-     * param percent Percent shown by the chart between -100 and 100
-     */
+
     this.draw = function (percent) {
       if (!!options.trackColor) {
-        // getImageData and putImageData are supported
         if (ctx.getImageData && ctx.putImageData) {
           if (!cachedBackground) {
             drawBackground();
@@ -90,7 +75,6 @@
 
       ctx.lineCap = options.lineCap;
 
-      // draw bar
       drawCircle(options.barColor, options.lineWidth, percent / 100);
     }.bind(this);
 
@@ -102,7 +86,6 @@
         var currentValue = options.easing(this, process, from, to - from, options.animate.duration);
         this.draw(currentValue);
 
-        //Show the number at the center of the circle
         options.onStep(from, to, currentValue);
 
         reqAnimationFrame(animation);
@@ -145,7 +128,6 @@
       this.element = element;
       this.options = options;
 
-      // merge user options into default options
       for (var i in defaultOptions) {
         if (defaultOptions.hasOwnProperty(i)) {
           options[i] = userOptions && typeof(userOptions[i]) !== 'undefined' ? userOptions[i] : defaultOptions[i];
@@ -155,17 +137,14 @@
         }
       }
 
-      // check for jQuery easing, use jQuery easing first
       if (typeof(options.easing) === 'string' && typeof(jQuery) !== 'undefined' && jQuery.isFunction(jQuery.easing[options.easing])) {
         options.easing = jQuery.easing[options.easing];
       } else {
         options.easing = defaultOptions.easing;
       }
 
-      // create renderer
       this.renderer = new options.renderer(element, options);
 
-      // initial draw
       this.renderer.draw(currentValue);
 
       if (element.getAttribute && element.getAttribute('data-percent')) {
@@ -184,7 +163,6 @@
 
   $.fn.pieChart = function (options) {
 
-    //Iterate all the dom to draw the pie-charts
     return this.each(function () {
       if (!$.data(this, 'pieChart')) {
         var userOptions = $.extend({}, options, $(this).data());
